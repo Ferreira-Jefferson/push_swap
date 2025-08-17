@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:43:41 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/17 13:08:58 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/17 17:37:49 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,6 @@ int		ft_print_pointer(va_list args);
 int		ft_print_string(va_list args);
 int		ft_print_unsigned(va_list args);
 long	ft_atol(const char *nptr);
+void	ft_free_str_vector(char **str_vector);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 09:30:12 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/07/19 12:41:14 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/17 17:35:27 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	free_matrix(char **matrix)
 	free(matrix);
 }
 
-static char	**create_matriz(char const *s, char c)
+static char	**create_matrix(char const *s, char c)
 {
 	int		word_count;
 	char	**matrix;
@@ -96,7 +96,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	matrix = create_matriz(s, c);
+	matrix = create_matrix(s, c);
 	if (!matrix)
 		return (NULL);
 	if (!populate_matrix(matrix, s, c))

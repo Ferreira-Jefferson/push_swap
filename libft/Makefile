@@ -28,6 +28,7 @@ UTILS_SRC = ft_print_char.c ft_print_hex_lower.c \
 			ft_print_hex_upper.c ft_print_int.c \
 			ft_print_percent.c ft_print_pointer.c \
 			ft_print_string.c ft_print_unsigned.c ft_atol.c \
+			ft_free_str_vector.c
 
 UTILS_SRC := $(addprefix $(UTILS_DIR)/, $(UTILS_SRC))
 

@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_free_str_vector.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/17 17:07:23 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/17 17:42:12 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/08/17 17:37:10 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/08/17 17:39:53 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include <stdlib.h>
 
-# include "libft/libft.h"
-# include "ft_error_handler.h"
-# include <stdlib.h>
+void	ft_free_str_vector(char **str_vector)
+{
+	char	**aux;
 
-#endif
+	aux = str_vector;
+	while (str_vector && *aux)
+	{
+		free(*aux);
+		aux++;
+	}
+	free(str_vector);
+}

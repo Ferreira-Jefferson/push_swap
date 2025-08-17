@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:27:31 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/17 17:22:12 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/17 17:41:20 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int	ft_handle_input_error(int argc, char *argv[])
 {
 	char	**values;
 	char	*arg_values;
+	int		error;
 
 	if (argc == 1)
 	{
@@ -115,9 +116,12 @@ int	ft_handle_input_error(int argc, char *argv[])
 		return (1);
 	}
 	if (argc == 2)
-		arg_values = argv[1];
+		arg_values = ft_strdup(argv[1]);
 	else
 		arg_values = ft_join_args(argc, argv);
 	values = ft_split(arg_values, ' ');
-	return (ft_validade_values(values));
+	error = ft_validade_values(values);
+	ft_to_free((void **)&arg_values);
+	ft_free_str_vector(values);
+	return (error);
 }
