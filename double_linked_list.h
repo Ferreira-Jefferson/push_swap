@@ -16,12 +16,12 @@
 
 # include "ft_node_handler.h"
 
-typedef struct s_stack t_stack;
+typedef struct s_deque t_deque;
 
-typedef struct s_stack {
+typedef struct s_deque {
 	t_node	*top;
 	t_node	*bottom;
 	int		size;
-}	t_stack;
+}	t_deque;
 
 #endif

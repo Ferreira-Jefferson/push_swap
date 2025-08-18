@@ -12,25 +12,42 @@
 
 #include "double_linked_list.h"
 
+// create deque
+t_deque *ft_deque_create(void)
+{
+	t_deque	*new_deque;
+
+	new_deque = (t_deque *) malloc(sizeof(t_deque));
+	if (!new_deque)
+		return (NULL);
+	new_deque->top = NULL;
+	new_deque->bottom = NULL;
+	new_deque->size = 0;
+	return (new_deque);
+}
+
+// insert node in top deque
+void ft_deque_push_front(t_deque *deque, int value)
+{
+
+}
+
+// insert node in bottom deque
+void ft_deque_push_bottom(t_deque *deque, int value)
+{
+
+}
+
+// remove node top in deque
+
+// remove node botton in deque
 
 
+// invert deque
 
-// create stack
+// size deque = ft_lstsize
 
-// insert node in top stack
+// clear deque = ft_lstclear
 
-// insert node in bottom stack
-
-// remove node top in stack
-
-// remove node botton in stack
-
-
-// invert stack
-
-// size stack = ft_lstsize
-
-// clear stack = ft_lstclear
-
-// print stack
+// print deque
 
