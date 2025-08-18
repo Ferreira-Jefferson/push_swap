@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_node_handler.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/17 17:07:23 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/18 09:10:39 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/08/18 10:06:35 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/08/18 10:06:37 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+// create node = ft_lstnew
 
-# include "libft/libft.h"
-# include "ft_error_handler.h"
-# include "double_linked_list.h"
+// add node in top = ft_lstadd_front
 
-# include <stdlib.h>
+// add node in bottom = ft_lstadd_front
 
-#endif
+// remove node = ft_lstdelone

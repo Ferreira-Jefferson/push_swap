@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_node_handler.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/17 17:07:23 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/18 09:10:39 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/08/18 10:07:10 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/08/18 10:09:15 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef FT_NODE_HANDLER_H
+# define FT_NODE_HANDLER_H
 
-# include "libft/libft.h"
-# include "ft_error_handler.h"
-# include "double_linked_list.h"
+typedef struct s_node t_node;
 
-# include <stdlib.h>
+typedef struct s_node {
+	int				value;
+	struct s_node	*prev;
+	struct s_node	*next;
+}	t_node;
 
 #endif
