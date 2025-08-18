@@ -24,4 +24,9 @@ typedef struct s_node {
 	struct s_node	*next;
 }	t_node;
 
+t_node	*ft_node_create(int value);
+t_node	*ft_node_add_top(t_node *lst, t_node *node);
+t_node	*ft_node_add_bottom(t_node *lst, t_node *node);
+t_node	*ft_node_remove(t_node *lst, int value);
+
 #endif
