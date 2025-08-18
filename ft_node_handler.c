@@ -10,10 +10,72 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// create node = ft_lstnew
+#include "ft_node_handler.h"
 
-// add node in top = ft_lstadd_front
+t_node	*ft_node_create(int value)
+{
+	t_node *new_node;
 
-// add node in bottom = ft_lstadd_front
+	new_node = (t_node*) malloc(sizeof(t_node));
+	if (!new_node)
+		return (NULL);
+	new_node->value = value;
+	new_node->next = NULL;
+	new_node->prev = NULL;
+	return (new_node);
+}
 
-// remove node = ft_lstdelone
+t_node	*ft_node_add_top(t_node *lst, t_node *node)
+{
+	if (!node)
+		return (lst);
+	if (!lst)
+	{
+		lst = node;
+		return (lst);
+	}
+	lst->prev = node;
+	node->next = lst;
+	lst = node;
+	return (lst);
+}
+
+t_node	*ft_node_add_bottom(t_node *lst, t_node *node)
+{
+	t_node *head;
+
+	if (!node)
+		return (lst);
+	if (!lst)
+	{
+		lst = node;
+		return (lst);
+	}
+	head = lst;
+	while (head->next)
+		head = head->next;
+	node->prev = head;
+	head->next = node;
+	return (lst);
+}
+
+t_node	*ft_node_remove(t_node *lst, int value)
+{
+	t_node	*head;
+
+	if (!lst)
+		return (NULL);
+	head = lst;
+	while (head && head->value != value)
+		head = head->next;
+	if (!head)
+		return (lst);
+	if (head->prev)
+		head->prev->next = head->next;
+	else
+		lst = head->next;
+	if (head->next)
+		head->next->prev = head->prev;
+	ft_to_free((void **) &head);
+	return (lst);
+}

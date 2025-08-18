@@ -13,6 +13,9 @@
 #ifndef FT_NODE_HANDLER_H
 # define FT_NODE_HANDLER_H
 
+# include "libft/libft.h"
+# include <stdlib.h>
+
 typedef struct s_node t_node;
 
 typedef struct s_node {
