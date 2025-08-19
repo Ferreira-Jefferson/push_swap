@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 10:06:35 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/19 10:16:55 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/19 10:22:02 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ t_node	*ft_node_create(int value)
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	return (new_node);
+}
+
+t_node	*ft_node_last(t_node *lst)
+{
+	t_node *last;
+
+	if (!lst)
+		return (NULL);
+	last = lst;
+	while (last->next)
+		last = last->next;
+	return (last);
 }
 
 t_node	*ft_node_add_top(t_node *lst, t_node *node)
@@ -42,7 +54,7 @@ t_node	*ft_node_add_top(t_node *lst, t_node *node)
 
 t_node	*ft_node_add_bottom(t_node *lst, t_node *node)
 {
-	t_node *head;
+	t_node *last;
 
 	if (!node)
 		return (lst);
@@ -51,11 +63,9 @@ t_node	*ft_node_add_bottom(t_node *lst, t_node *node)
 		lst = node;
 		return (lst);
 	}
-	head = lst;
-	while (head->next)
-		head = head->next;
-	node->prev = head;
-	head->next = node;
+	last = ft_node_last(lst);
+	node->prev = last;
+	last->next = node;
 	return (lst);
 }
 
@@ -78,16 +88,4 @@ t_node	*ft_node_remove(t_node *lst, int value)
 		head->next->prev = head->prev;
 	ft_to_free((void **) &head);
 	return (lst);
-}
-
-t_node	*ft_node_last(t_node *lst)
-{
-	t_node *last;
-
-	if (!lst)
-		return (NULL);
-	last = lst;
-	while (last->next)
-		last = last->next;
-	return (last);
 }
