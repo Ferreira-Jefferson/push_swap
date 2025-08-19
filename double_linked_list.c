@@ -6,13 +6,12 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 09:11:21 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/18 10:06:31 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/19 09:54:36 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "double_linked_list.h"
 
-// create deque
 t_deque *ft_deque_create(void)
 {
 	t_deque	*new_deque;
@@ -26,28 +25,90 @@ t_deque *ft_deque_create(void)
 	return (new_deque);
 }
 
-// insert node in top deque
-void ft_deque_push_front(t_deque *deque, int value)
+void ft_deque_push_top(t_deque *deque, int value)
 {
+	t_node *new_node;
 
+	if (!deque)
+		return ;
+	new_node = ft_node_create(value);
+	if (!new_node)
+		return ;
+	if (deque->size == 0)
+	{
+		deque->top = new_node;
+		deque->bottom = new_node;
+		deque->size = 1;
+		return ;
+	}
+	new_node->next = deque->top;
+	deque->top->prev = new_node;
+	deque->top = new_node;
+	deque->size++;
 }
 
-// insert node in bottom deque
 void ft_deque_push_bottom(t_deque *deque, int value)
 {
+	t_node *new_node;
 
+	if (!deque)
+		return ;
+	new_node = ft_node_create(value);
+	if (!new_node)
+		return ;
+	if (deque->size == 0)
+	{
+		deque->top = new_node;
+		deque->bottom = new_node;
+		deque->size = 1;
+		return ;
+	}
+	new_node->prev = deque->bottom;
+	deque->bottom->next = new_node;
+	deque->bottom = new_node;
+	deque->size++;
 }
 
-// remove node top in deque
+void ft_deque_pop_top(t_deque *deque)
+{
+	t_node *to_free;
 
-// remove node botton in deque
+	if (!deque)
+		return ;
+	if (!deque->top)
+		return ;
+	if (deque->size == 1)
+	{
+		deque->top = ft_to_free((void **) &deque->top);
+		deque->bottom = NULL;
+		deque->size = 0;
+		return ;
+	}
+	to_free = deque->top;
+	deque->top = deque->top->next;
+	deque->top->prev = NULL;
+	deque->size--;
+	ft_to_free((void **) &to_free);
+}
 
+void ft_deque_pop_bottom(t_deque *deque)
+{
+	t_node *to_free;
 
-// invert deque
-
-// size deque = ft_lstsize
-
-// clear deque = ft_lstclear
-
-// print deque
-
+	if (!deque)
+		return ;
+	if (!deque->bottom)
+		return ;
+	if (deque->size == 1)
+	{
+		deque->bottom = ft_to_free((void **) &deque->bottom);
+		deque->top = NULL;
+		deque->size = 0;
+		return ;
+	}
+	to_free = deque->bottom;
+	deque->bottom = deque->bottom->prev;
+	deque->bottom->next = NULL;
+	deque->size--;
+	ft_to_free((void **) &to_free);
+}
