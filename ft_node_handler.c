@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 10:06:35 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/18 10:06:37 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/19 10:16:55 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,16 @@ t_node	*ft_node_remove(t_node *lst, int value)
 		head->next->prev = head->prev;
 	ft_to_free((void **) &head);
 	return (lst);
+}
+
+t_node	*ft_node_last(t_node *lst)
+{
+	t_node *last;
+
+	if (!lst)
+		return (NULL);
+	last = lst;
+	while (last->next)
+		last = last->next;
+	return (last);
 }
