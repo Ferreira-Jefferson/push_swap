@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_linked_list.h                               :+:      :+:    :+:   */
+/*   ft_deque_handler.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 09:09:26 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/19 09:59:06 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/19 10:29:32 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#ifndef DOUBLE_LINKED_LIST_H
-# define DOUBLE_LINKED_LIST_H
+#ifndef FT_DEQUE_HANDLER_H
+# define FT_DEQUE_HANDLER_H
 
 # include "ft_node_handler.h"
 

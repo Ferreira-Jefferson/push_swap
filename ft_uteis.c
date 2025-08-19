@@ -6,9 +6,11 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 10:00:08 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/19 10:04:16 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/19 10:31:45 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_deque_handler.h"
 
 // invert list
 
