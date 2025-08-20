@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:28:07 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/20 16:36:51 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/20 16:39:42 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,11 @@ void	rb(t_deque *list_b)
 		return ;
 	rotate(list_b);
 	ft_printf("rb\n");
+}
+
+void	rr(t_deque *list_a, t_deque *list_b)
+{
+	ra(list_a);
+	rb(list_b);
+	ft_printf("rr\n");
 }
