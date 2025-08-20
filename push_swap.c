@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:10:19 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/20 16:36:32 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/20 16:44:32 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ static void sort_list(t_deque *list_a)
 
 	ra(list_a);
 	rb(list_b);
+	ft_printf("\nlist_a\n");
+	ft_print_list(list_a);
+	ft_printf("\nlist_b\n");
+	ft_print_list(list_b);
+
+	rrr(list_a, list_b);
 	ft_printf("\nlist_a\n");
 	ft_print_list(list_a);
 	ft_printf("\nlist_b\n");
