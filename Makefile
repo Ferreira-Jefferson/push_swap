@@ -6,7 +6,8 @@ CFLAGS = -Wall -Werror -Wextra -g
 LIB_DIR = libft
 LIBFT = $(LIB_DIR)/libft.a
 
-MANDATORY_SRC = push_swap.c ft_error_handler.c ft_node_handler.c ft_deque_handler.c ft_utils.c
+MANDATORY_SRC = push_swap.c ft_error_handler.c ft_node_handler.c ft_deque_handler.c \
+				ft_utils.c ft_auxiliaries.c
 
 MANDATORY_OBJ = $(MANDATORY_SRC:.c=.o)
 

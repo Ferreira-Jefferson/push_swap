@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.h                                         :+:      :+:    :+:   */
+/*   ft_auxiliaries.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/20 12:12:48 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/20 12:55:42 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/08/20 12:36:51 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/08/20 12:47:59 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_UTILS_H
-# define FT_UTILS_H
+#include "ft_deque_handler.h"
 
-# include "ft_deque_handler.h"
+void	ft_print_list(t_deque *deque)
+{
+	size_t	i;
+	t_node	*head;
 
-void	ft_invert_list(t_deque *deque);
-void	ft_print_list(t_deque *deque);
-t_node	*ft_detache_node_by_index(t_deque *deque, size_t index);
-void	ft_clear_deque(t_deque *deque);
-size_t	ft_get_index(t_deque *deque, int value);
-
-#endif
+	head = deque->top;
+	i = 0;
+	while (i < deque->size)
+	{
+		ft_printf("[%d]: %d\n", i, head->value);
+		head = head->next;
+		i++;
+	}
+}
