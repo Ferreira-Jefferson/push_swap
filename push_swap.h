@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 17:07:23 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/20 15:38:02 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/20 16:34:52 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@ void	sb(t_deque *stack_b);
 void	ss(t_deque *stack_a, t_deque *stack_b);
 void	pa(t_deque *list_a, t_deque *list_b);
 void	pb(t_deque *list_a, t_deque *list_b);
+void	ra(t_deque *list_a);
+void	rb(t_deque *list_b);
 
 #endif

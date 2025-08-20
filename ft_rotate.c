@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.c                                          :+:      :+:    :+:   */
+/*   ft_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/20 15:22:41 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/20 16:33:46 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/08/20 16:28:07 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/08/20 16:36:51 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pa(t_deque *list_a, t_deque *list_b)
+static void rotate(t_deque *list)
 {
 	t_node *node;
-
-	node = ft_detache_node_by_index(list_b, 0);
+	node = ft_detache_node_by_index(list, 0);
 	if (!node)
 		return ;
-	ft_deque_push_top(list_a, node->value);
-	ft_printf("pa\n");
+	ft_deque_push_bottom(list, node->value);	
 }
 
-void	pb(t_deque *list_a, t_deque *list_b)
+void	ra(t_deque *list_a)
 {
-	t_node *node;
-
-	node = ft_detache_node_by_index(list_a, 0);
-	if (!node)
+	if (!list_a || list_a->size <= 1)
 		return ;
-	ft_deque_push_top(list_b, node->value);
-	ft_printf("pb\n");
+	rotate(list_a);
+	ft_printf("ra\n");
+}
+
+void	rb(t_deque *list_b)
+{
+	if (!list_b || list_b->size <= 1)
+		return ;
+	rotate(list_b);
+	ft_printf("rb\n");
 }
