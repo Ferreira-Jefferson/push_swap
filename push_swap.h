@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 17:07:23 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/18 09:10:39 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/19 11:19:02 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "libft/libft.h"
 # include "ft_error_handler.h"
-# include "double_linked_list.h"
+# include "ft_deque_handler.h"
+# include "ft_utils.h"
 
 # include <stdlib.h>
 

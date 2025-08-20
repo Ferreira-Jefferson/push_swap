@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 10:07:10 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/18 10:09:15 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/20 12:14:54 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "libft/libft.h"
 # include <stdlib.h>
 
-typedef struct s_node t_node;
+typedef struct s_node	t_node;
 
 typedef struct s_node {
 	int				value;

@@ -6,13 +6,13 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 09:11:21 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/19 10:30:11 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/20 12:12:01 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque_handler.h"
 
-t_deque *ft_deque_create(void)
+t_deque	*ft_deque_create(void)
 {
 	t_deque	*new_deque;
 
@@ -25,9 +25,9 @@ t_deque *ft_deque_create(void)
 	return (new_deque);
 }
 
-void ft_deque_push_top(t_deque *deque, int value)
+void	ft_deque_push_top(t_deque *deque, int value)
 {
-	t_node *new_node;
+	t_node	*new_node;
 
 	if (!deque)
 		return ;
@@ -47,9 +47,9 @@ void ft_deque_push_top(t_deque *deque, int value)
 	deque->size++;
 }
 
-void ft_deque_push_bottom(t_deque *deque, int value)
+void	ft_deque_push_bottom(t_deque *deque, int value)
 {
-	t_node *new_node;
+	t_node	*new_node;
 
 	if (!deque)
 		return ;
@@ -69,9 +69,9 @@ void ft_deque_push_bottom(t_deque *deque, int value)
 	deque->size++;
 }
 
-void ft_deque_pop_top(t_deque *deque)
+void	ft_deque_pop_top(t_deque *deque)
 {
-	t_node *to_free;
+	t_node	*to_free;
 
 	if (!deque)
 		return ;
@@ -91,9 +91,9 @@ void ft_deque_pop_top(t_deque *deque)
 	ft_to_free((void **) &to_free);
 }
 
-void ft_deque_pop_bottom(t_deque *deque)
+void	ft_deque_pop_bottom(t_deque *deque)
 {
-	t_node *to_free;
+	t_node	*to_free;
 
 	if (!deque)
 		return ;

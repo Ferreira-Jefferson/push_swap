@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:27:31 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/17 17:41:20 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/20 12:15:16 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_not_is_only_number(char *value)
 	{
 		count_number += ft_isdigit(*value);
 		count_space += ft_isspace(*value);
-		if (*value == '-' || *value == '+')
+		if ((*value == '-' || *value == '+') && ft_isdigit(*(value + 1)))
 			count_signal += 1;
 		value++;
 	}
@@ -87,17 +87,24 @@ char	*ft_join_args(int argc, char *argv[])
 {
 	int		i;
 	char	*values;
+	char	*values_args;
 	char	*to_free;
 
 	values = ft_strdup("");
+	if (!values)
+		return (NULL);
 	i = 1;
 	while (i < argc)
 	{
+		values_args = ft_strjoin(argv[i], " ");
+		if (!values_args)
+			return (ft_to_free((void **) &values));
 		to_free = values;
-		values = ft_strjoin(values, ft_strjoin(argv[i], " "));
-		ft_to_free((void **) &to_free);
+		values = ft_strjoin(values, values_args);
+		ft_to_free((void **) &values_args);
 		if (!values)
-			return (NULL);
+			return (ft_to_free((void **) &to_free));
+		ft_to_free((void **) &to_free);
 		i++;
 	}
 	return (values);
@@ -111,14 +118,15 @@ int	ft_handle_input_error(int argc, char *argv[])
 
 	if (argc == 1)
 	{
-		ft_printf("Usage: program-name 1 2 3 ...");
-		ft_printf(" OR program-name \"1 2 3 ...\".\n");
+		ft_printf("Usage: program-name number_values");
 		return (1);
 	}
 	if (argc == 2)
 		arg_values = ft_strdup(argv[1]);
 	else
 		arg_values = ft_join_args(argc, argv);
+	if (!arg_values)
+		return (1);
 	values = ft_split(arg_values, ' ');
 	error = ft_validade_values(values);
 	ft_to_free((void **)&arg_values);
