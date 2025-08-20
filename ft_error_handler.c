@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:27:31 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/20 12:15:16 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/20 14:39:30 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,37 +83,9 @@ int	ft_validade_values(char **values)
 	return (ft_validate_duplicate_values(values));
 }
 
-char	*ft_join_args(int argc, char *argv[])
-{
-	int		i;
-	char	*values;
-	char	*values_args;
-	char	*to_free;
-
-	values = ft_strdup("");
-	if (!values)
-		return (NULL);
-	i = 1;
-	while (i < argc)
-	{
-		values_args = ft_strjoin(argv[i], " ");
-		if (!values_args)
-			return (ft_to_free((void **) &values));
-		to_free = values;
-		values = ft_strjoin(values, values_args);
-		ft_to_free((void **) &values_args);
-		if (!values)
-			return (ft_to_free((void **) &to_free));
-		ft_to_free((void **) &to_free);
-		i++;
-	}
-	return (values);
-}
-
 int	ft_handle_input_error(int argc, char *argv[])
 {
 	char	**values;
-	char	*arg_values;
 	int		error;
 
 	if (argc == 1)
@@ -121,15 +93,10 @@ int	ft_handle_input_error(int argc, char *argv[])
 		ft_printf("Usage: program-name number_values");
 		return (1);
 	}
-	if (argc == 2)
-		arg_values = ft_strdup(argv[1]);
-	else
-		arg_values = ft_join_args(argc, argv);
-	if (!arg_values)
+	values = ft_get_values(argc, argv);
+	if (!values)
 		return (1);
-	values = ft_split(arg_values, ' ');
 	error = ft_validade_values(values);
-	ft_to_free((void **)&arg_values);
 	ft_free_str_vector(values);
 	return (error);
 }
