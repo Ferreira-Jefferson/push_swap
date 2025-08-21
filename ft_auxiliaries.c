@@ -6,12 +6,12 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:36:51 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/20 14:11:12 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:31:20 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque_handler.h"
-# include "ft_auxiliaries.h"
+#include "ft_auxiliaries.h"
 
 char	**ft_get_values(int argc, char *argv[])
 {
@@ -68,5 +68,43 @@ void	ft_print_list(t_deque *deque)
 		ft_printf("[%d]: %d\n", i, head->value);
 		head = head->next;
 		i++;
+	}
+}
+
+void	ft_invert_list(t_deque *deque)
+{
+	t_node	*temp;
+	t_node	*current;
+	t_node	*next;
+
+	if (deque->size == 0)
+		return ;
+	current = deque->top;
+	next = deque->top->next;
+	while (current)
+	{
+		temp = current->prev;
+		current->prev = current->next;
+		current->next = temp;
+		current = next;
+		if (next)
+			next = next->next;
+	}
+	temp = deque->top;
+	deque->top = deque->bottom;
+	deque->bottom = temp;
+}
+
+void	ft_reset_cost(t_deque *deque)
+{
+	t_node	*head;
+
+	if (!deque || deque->size == 0)
+		return ;
+	head = deque->top;
+	while (head)
+	{
+		head->cost = 0;
+		head = head->next;
 	}
 }

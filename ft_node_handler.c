@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 10:06:35 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/20 12:16:24 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:13:53 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_node	*ft_node_create(int value)
 	if (!new_node)
 		return (NULL);
 	new_node->value = value;
+	new_node->value = 0;
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	return (new_node);

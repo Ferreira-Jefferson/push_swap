@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:10:19 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/21 11:08:23 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:28:37 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ static void sort_list(t_deque *list_a)
 	ft_printf("\nlist_b\n");
 	ft_print_list(list_b);
 	// tem que ter uma calculate_cost
-	
 }
 
 int	main(int argc, char *argv[])

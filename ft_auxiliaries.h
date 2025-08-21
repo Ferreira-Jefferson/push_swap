@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:12:48 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/20 14:05:57 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:24:32 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,7 @@
 char	**ft_get_values(int argc, char *argv[]);
 char	*ft_join_args(int argc, char *argv[]);
 void	ft_print_list(t_deque *deque);
+void	ft_invert_list(t_deque *deque);
+void	ft_reset_cost(t_deque *deque);
 
 #endif

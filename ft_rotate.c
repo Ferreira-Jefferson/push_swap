@@ -6,19 +6,20 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:28:07 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/21 11:05:33 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:28:16 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void rotate(t_deque *list)
+static void	rotate(t_deque *list)
 {
-	t_node *node;
+	t_node	*node;
+
 	node = ft_detache_node_by_index(list, 0);
 	if (!node)
 		return ;
-	ft_deque_push_bottom(list, node->value);	
+	ft_deque_push_bottom(list, node->value);
 }
 
 void	ra(t_deque *list_a, int is_rr)

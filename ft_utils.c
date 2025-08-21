@@ -6,35 +6,11 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 10:00:08 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/20 14:47:50 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:31:31 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_deque_handler.h"
-
-void	ft_invert_list(t_deque *deque)
-{
-	t_node	*temp;
-	t_node	*current;
-	t_node	*next;
-
-	if (deque->size == 0)
-		return ;
-	current = deque->top;
-	next = deque->top->next;
-	while (current)
-	{
-		temp = current->prev;
-		current->prev = current->next;
-		current->next = temp;
-		current = next;
-		if (next)
-			next = next->next;
-	}
-	temp = deque->top;
-	deque->top = deque->bottom;
-	deque->bottom = temp;
-}
 
 static t_node	*ft_get_node(t_deque *deque, size_t index)
 {
@@ -103,7 +79,7 @@ void	ft_free_deque(t_deque *deque)
 	ft_to_free((void **) &deque);
 }
 
-size_t	ft_get_index(t_deque *deque, int value)
+size_t	ft_get_index_by_cost(t_deque *deque, int cost)
 {
 	size_t	index;
 	t_node	*head;
@@ -112,7 +88,7 @@ size_t	ft_get_index(t_deque *deque, int value)
 		return (deque->size);
 	head = deque->top;
 	index = 0;
-	while (head && head->value != value)
+	while (head && head->cost != cost)
 	{
 		head = head->next;
 		index++;
