@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 13:16:15 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/20 15:23:51 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/21 10:50:33 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,27 @@ static void swap(t_deque *list)
 	node_2->value = temp;
 }
 
-void sa(t_deque *list_a)
+void sa(t_deque *list_a, int is_ss)
 {
 	if (!list_a || list_a->size <= 1)
 		return ;
 	swap(list_a);
-	ft_printf("sa\n");
+	if (!is_ss)
+		ft_printf("sa\n");
 }
 
-void sb(t_deque *list_b)
+void sb(t_deque *list_b, int is_ss)
 {
 	if (!list_b || list_b->size <= 1)
 		return ;
 	swap(list_b);
-	ft_printf("sb\n");
+	if (!is_ss)
+		ft_printf("sb\n");
 }
 
 void ss(t_deque *list_a, t_deque *list_b)
 {
-	sa(list_a);
-	sb(list_b);
+	sa(list_a, 1);
+	sb(list_b, 1);
 	ft_printf("ss\n");
 }
