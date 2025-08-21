@@ -6,11 +6,11 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 13:16:15 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/21 11:30:29 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:50:17 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
 static void	swap(t_deque *list)
 {

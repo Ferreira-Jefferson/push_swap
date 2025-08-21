@@ -6,20 +6,19 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 17:07:23 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/21 11:08:03 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:51:34 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include "ft_error_handler.h"
 # include "ft_deque_handler.h"
 # include "ft_auxiliaries.h"
 # include "ft_utils.h"
-
-# include <stdlib.h>
+# include "ft_core.h"
 
 void	sa(t_deque *stack_a, int is_ss);
 void	sb(t_deque *stack_b, int is_ss);

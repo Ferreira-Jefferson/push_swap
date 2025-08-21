@@ -6,11 +6,11 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:27:31 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/20 14:39:30 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:49:54 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_error_handler.h"
+#include "includes/ft_error_handler.h"
 
 int	ft_not_is_only_number(char *value)
 {

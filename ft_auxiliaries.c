@@ -6,12 +6,12 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:36:51 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/21 11:31:20 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:49:42 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_deque_handler.h"
-#include "ft_auxiliaries.h"
+#include "includes/ft_deque_handler.h"
+#include "includes/ft_auxiliaries.h"
 
 char	**ft_get_values(int argc, char *argv[])
 {

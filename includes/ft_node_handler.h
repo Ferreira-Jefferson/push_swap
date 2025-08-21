@@ -6,15 +6,14 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 10:07:10 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/21 11:13:24 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:52:40 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_NODE_HANDLER_H
 # define FT_NODE_HANDLER_H
 
-# include "libft/libft.h"
-# include <stdlib.h>
+# include "../libft/libft.h"
 
 typedef struct s_node	t_node;
 

@@ -6,11 +6,11 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 10:00:08 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/21 11:31:31 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:50:21 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_deque_handler.h"
+#include "includes/ft_deque_handler.h"
 
 static t_node	*ft_get_node(t_deque *deque, size_t index)
 {

@@ -6,11 +6,11 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:28:07 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/21 11:28:16 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:50:12 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "includes/push_swap.h"
 
 static void	rotate(t_deque *list)
 {

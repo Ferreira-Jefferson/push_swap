@@ -6,11 +6,11 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 09:11:21 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/20 12:12:01 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/21 11:47:36 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_deque_handler.h"
+#include "includes/ft_deque_handler.h"
 
 t_deque	*ft_deque_create(void)
 {
