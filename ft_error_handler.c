@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:27:31 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/21 11:49:54 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/21 17:28:41 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	ft_validade_values(char **values)
 		if (!value)
 		{
 			len = ft_strlen(values[i]);
-			is_zero = (len <= 2 && *values[len - 1] == '0');
+			is_zero = (len <= 2 && values[i][len - 1] == '0');
 			if (!is_zero)
 				return (1);
 		}

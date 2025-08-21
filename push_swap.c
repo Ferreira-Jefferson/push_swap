@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:10:19 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/21 11:54:02 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/21 17:55:22 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,33 +36,23 @@ static void sort_list(t_deque *list_a)
 {
 	t_deque	*list_b;
 
+	if (ft_is_it_ordered_by_top(list_a))
+		return ;
+	if (list_a->size == 2)
+	{
+		if (list_a->top->value > list_a->bottom->value)
+			sa(list_a, 0);
+		return ;
+	}
+	if (list_a->size == 3)
+		ft_sort_three(list_a);
 	list_b = ft_deque_create();
 	if (!list_b)
 		return ;
-	ss(list_a, list_b);
-	ft_printf("\nlist_a\n");
-	ft_print_list(list_a);
-
-	pb(list_a, list_b);
-	pb(list_a, list_b);
-	ft_printf("\nlist_a\n");
-	ft_print_list(list_a);
-	ft_printf("\nlist_b\n");
-	ft_print_list(list_b);
-
-	ra(list_a, 0);
-	rb(list_b, 0);
-	ft_printf("\nlist_a\n");
-	ft_print_list(list_a);
-	ft_printf("\nlist_b\n");
-	ft_print_list(list_b);
-
-	rrr(list_a, list_b);
-	ft_printf("\nlist_a\n");
-	ft_print_list(list_a);
-	ft_printf("\nlist_b\n");
-	ft_print_list(list_b);
-	// tem que ter uma calculate_cost
+	while (!(list_b->size == 0 && ft_is_it_ordered_by_top(list_a)))
+	{
+		sa(list_a, 0);
+	}
 }
 
 int	main(int argc, char *argv[])
@@ -80,6 +70,8 @@ int	main(int argc, char *argv[])
 	populate_list_with_args(list_a, argc, argv);
 	ft_print_list(list_a);
 	sort_list(list_a);
+	ft_printf("Depois:\n");
+	ft_print_list(list_a);
 	ft_free_deque(list_a);
 	return (0);
 }
