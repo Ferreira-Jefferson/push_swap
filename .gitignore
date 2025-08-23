@@ -2,4 +2,6 @@
 *.o
 a.out
 push_swap
-test*
+*test*
+Push-Swap-Tester
+checker_linux

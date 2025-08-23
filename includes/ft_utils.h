@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:12:48 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/21 11:22:36 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/22 18:00:47 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 # define FT_UTILS_H
 
 # include "ft_deque_handler.h"
+# include "ft_auxiliaries.h"
 
 void	ft_print_list(t_deque *deque);
 t_node	*ft_detache_node_by_index(t_deque *deque, size_t index);
+t_node	*ft_get_node_by_index(t_deque *deque, size_t index);
 void	ft_free_deque(t_deque *deque);
-size_t	ft_get_index_by_cost(t_deque *deque, int cost);
+size_t	ft_get_lowest_cost_index(t_deque *deque);
+size_t	ft_get_index_of_lowest_value(t_deque *deque);
 
 #endif

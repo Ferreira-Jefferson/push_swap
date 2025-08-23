@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:10:19 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/21 17:55:22 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/23 17:04:21 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static void populate_list_with_args(t_deque *list, int argc, char *argv[])
 static void sort_list(t_deque *list_a)
 {
 	t_deque	*list_b;
+	size_t	index_lowest_cost;
+	t_node	*node_lowest_cost;
 
 	if (ft_is_it_ordered_by_top(list_a))
 		return ;
@@ -45,14 +47,69 @@ static void sort_list(t_deque *list_a)
 		return ;
 	}
 	if (list_a->size == 3)
-		ft_sort_three(list_a);
+		return(ft_sort_three(list_a));
 	list_b = ft_deque_create();
 	if (!list_b)
 		return ;
-	while (!(list_b->size == 0 && ft_is_it_ordered_by_top(list_a)))
+	if (list_a->size == 4)
+		return (ft_sort_four(list_a, list_b));
+	pb(list_a, list_b);
+	pb(list_a, list_b);
+	if (list_b->top->value < list_b->bottom->value)
+		sb(list_b, 0);
+	while (list_a->size)
 	{
-		sa(list_a, 0);
+		// Eu não estou contando o custo de girar os dois juntos, caso leve mais giros, isso pode ser observado.
+		ft_reset_cost(list_a);
+		ft_calculate_cost_a(list_a, -1);
+		ft_calculate_cost_b(list_a, list_b);
+		index_lowest_cost = ft_get_lowest_cost_index(list_a);
+		node_lowest_cost = ft_get_node_by_index(list_a, index_lowest_cost);
+		if (node_lowest_cost->cost_a > 0 && node_lowest_cost->cost_b > 0)
+			ft_move_both(list_a, node_lowest_cost->cost_a, list_b, node_lowest_cost->cost_b);
+		else if (node_lowest_cost->cost_a < 0 && node_lowest_cost->cost_b < 0)
+			ft_move_both(list_a, node_lowest_cost->cost_a, list_b, node_lowest_cost->cost_b);
+		else
+		{
+			ft_move_a(list_a, node_lowest_cost->cost_a);
+			ft_move_b(list_b, node_lowest_cost->cost_b);
+		}
+		pb(list_a, list_b);
+		if (list_a->size == 3)
+			break;
 	}
+	ft_sort_three(list_a);
+	ft_reset_cost(list_a);
+	while (list_b->size)
+	{
+		ft_reset_cost(list_b);
+		
+		ft_calculate_cost_a(list_b, -1);
+		ft_calculate_cost_b_reverse(list_b, list_a);
+		
+		ft_printf("\nA\n");
+		ft_print_list(list_a);
+		ft_printf("B\n");
+		ft_print_list(list_b);
+	
+		index_lowest_cost = ft_get_lowest_cost_index(list_b);
+		node_lowest_cost = ft_get_node_by_index(list_b, index_lowest_cost);
+		ft_printf("node: %d\n", node_lowest_cost->value);
+		if (node_lowest_cost->cost_a > 0 && node_lowest_cost->cost_b > 0)
+			ft_move_both(list_a, node_lowest_cost->cost_a, list_b, node_lowest_cost->cost_b);
+		else if (node_lowest_cost->cost_a < 0 && node_lowest_cost->cost_b < 0)
+			ft_move_both(list_a, node_lowest_cost->cost_a, list_b, node_lowest_cost->cost_b);
+		else
+		{
+			ft_move_a(list_a, node_lowest_cost->cost_a);
+			ft_move_b(list_b, node_lowest_cost->cost_b);
+		}
+		pa(list_a, list_b);
+	}
+	ft_printf("\nA\n");
+	ft_print_list(list_a);
+	ft_printf("B\n");
+	ft_print_list(list_b);
 }
 
 int	main(int argc, char *argv[])
@@ -69,8 +126,9 @@ int	main(int argc, char *argv[])
 		return (1);
 	populate_list_with_args(list_a, argc, argv);
 	ft_print_list(list_a);
+	ft_printf("--main--\n\n");
 	sort_list(list_a);
-	ft_printf("Depois:\n");
+	ft_printf("\n--main--\n");
 	ft_print_list(list_a);
 	ft_free_deque(list_a);
 	return (0);

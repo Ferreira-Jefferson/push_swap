@@ -2,6 +2,7 @@ NAME		= push_swap
 
 CC		  = gcc
 CFLAGS	  = -Wall -Werror -Wextra -g
+#  -fsanitize=address
 INCLUDES	= includes
 OBJDIR	  = objs
 

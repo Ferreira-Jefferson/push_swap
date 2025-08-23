@@ -6,13 +6,11 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 11:34:59 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/21 17:39:56 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/23 17:03:51 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_core.h"
-
-// verifica se a lista está ordenado
 
 int	ft_is_it_ordered_by_top(t_deque *list)
 {
@@ -54,6 +52,191 @@ int	ft_is_it_ordered_by_bottom(t_deque *list)
 	return (1);
 }
 
+static void	ft_set_min_and_max(t_deque *list_b, int *min, int *max)
+{
+	t_node	*head;
+
+	*min = INT_MAX;
+	*max = INT_MIN;
+	head = list_b->top;
+	while (head)
+	{
+		if (head->value > *max)
+			*max = head->value;
+		else if (head->value < *min)
+			*min = head->value;
+		head = head->next;
+	}
+}
+
+size_t	ft_index_to_insert_in_b_reverse(t_deque *list_b, int value)
+{
+	t_node	*current;
+	size_t	index;
+	int		min;
+	int		max;
+
+	current = list_b->top;
+	ft_set_min_and_max(list_b, &min, &max);
+	index = 0;
+	while (current)
+	{
+		if ((value > max && current->value == max) ||
+			(value < min && current->value == min))
+			return (index + 1);
+		else if (current->value > value && (current->next && value > current->next->value))
+			return (index + 1);
+		current = current->next;
+		index++;
+	}
+	return (0);
+}
+
+int	ft_calculate_cost_b_reverse(t_deque *list_b, t_deque *list_a)
+{
+	t_node	*head;
+	int		index;
+
+	head = list_a->top;
+	while (head)
+	{
+		index = ft_index_to_insert_in_b_reverse(list_b, head->value);
+		if (index <= (int) list_b->size / 2)
+			head->cost_a = index;
+		else
+			head->cost_a = -(list_b->size - index);
+		head = head->next;
+	}
+	return (0);
+}
+
+
+size_t	ft_index_to_insert_in_b(t_deque *list_b, int value)
+{
+	t_node	*current;
+	size_t	index;
+	size_t	index_to_return;
+	int		min;
+	int		max;
+
+	current = list_b->top;
+	ft_set_min_and_max(list_b, &min, &max);
+	index_to_return = 0;
+	index = 0;
+	while (current)
+	{
+		if ((value > max || value < min) && current->value == max)
+			return (index);
+		else if (current->value >= value && (current->next && value > current->next->value))
+			return (index + 1);
+		current = current->next;
+		index++;
+	}
+	return (index_to_return);
+}
+
+int	ft_calculate_cost_a(t_deque *list, int index)
+{
+	t_node	*head;
+	size_t	current_index;
+
+	if (index >= 0)
+	{
+		if (index <= (int) list->size / 2)
+			return (index);
+		else
+			return (-(list->size  - index));
+	}
+	current_index = 0;
+	head = list->top;
+	while (head)
+	{
+		head->cost_a = ft_calculate_cost_a(list, current_index);
+		head = head->next;
+		current_index++;
+	}
+	return (0);
+}
+
+int	ft_calculate_cost_b(t_deque *list_a, t_deque *list_b)
+{
+	t_node	*head;
+	int		index;
+
+	head = list_a->top;
+	while (head)
+	{
+		index = ft_index_to_insert_in_b(list_b, head->value);
+		if (index <= (int) list_b->size / 2)
+			head->cost_b = index;
+		else
+			head->cost_b = -(list_b->size - index);
+		head = head->next;
+	}
+	return (0);
+}
+
+void	ft_move_a(t_deque *list_a, int cost)
+{
+	if (cost < 0)
+	{
+		while (cost)
+		{
+			rra(list_a, 0);
+			cost++;
+		}		
+	}
+	while (cost)
+	{
+		ra(list_a, 0);
+		cost--;
+	}	
+}
+
+void	ft_move_b(t_deque *list_b, int cost)
+{
+	if (cost < 0)
+	{
+		while (cost)
+		{
+			rrb(list_b, 0);
+			cost++;
+		}		
+	}
+	while (cost)
+	{
+		rb(list_b, 0);
+		cost--;
+	}	
+}
+
+void	ft_move_both(t_deque *list_a, int cost_a, t_deque *list_b, int cost_b)
+{
+	int abs_cost_a;
+	int abs_cost_b;
+
+	abs_cost_a = ft_abs(cost_a);
+	abs_cost_b = ft_abs(cost_b);
+	while (abs_cost_a && abs_cost_b)
+	{
+		if (cost_a < 0)
+			rrr(list_a, list_b);
+		else
+			rr(list_a, list_b);
+		abs_cost_a--;
+		abs_cost_b--;
+	}
+	while (abs_cost_a > 0 || abs_cost_b > 0)
+	{
+		if (abs_cost_a)
+			ft_move_a(list_a, cost_a);
+		else if (abs_cost_b)
+			ft_move_b(list_b, cost_b);
+		abs_cost_a--;
+		abs_cost_b--;
+	}
+}
+
 void	ft_sort_three(t_deque *list)
 {
 	int	top;
@@ -75,12 +258,19 @@ void	ft_sort_three(t_deque *list)
 		return (sa(list, 0));
 	if (top > middle && top > bottom)
 		return (ra(list, 0));
-	rra(list, 0);
+	ra(list, 0);
+	ft_sort_three(list);
 }
 
-// calcular o custos
-	// calcular o custo de A
-	// calcular o custo de B
-// decidir qual mover
-	// executar movimento
-	// resetar os custo
+void	ft_sort_four(t_deque *list_a,t_deque *list_b)
+{
+	int	index_lowest;
+	int		cost;
+
+	index_lowest = ft_get_index_of_lowest_value(list_a);
+	cost = ft_calculate_cost_a(list_a, index_lowest);
+	ft_move_a(list_a, cost);
+	pb(list_a, list_b);
+	ft_sort_three(list_a);
+	pa(list_a, list_b);	
+}

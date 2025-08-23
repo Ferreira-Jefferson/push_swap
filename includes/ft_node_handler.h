@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 10:07:10 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/21 11:52:40 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/23 14:36:12 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ typedef struct s_node	t_node;
 
 typedef struct s_node {
 	int				value;
-	int				cost;
+	int				cost_a;
+	int				cost_b;
 	struct s_node	*prev;
 	struct s_node	*next;
 }	t_node;

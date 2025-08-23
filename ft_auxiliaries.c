@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:36:51 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/21 11:49:42 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/23 14:36:31 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	ft_print_list(t_deque *deque)
 	i = 0;
 	while (i < deque->size)
 	{
-		ft_printf("[%d]: %d\n", i, head->value);
+		//  ft_printf("[%d]: %d\n", i, head->value);
+		ft_printf("[%d]: value: %d | cost_a: %d | cost_b: %d\n", i, head->value, head->cost_a, head->cost_b);
 		head = head->next;
 		i++;
 	}
@@ -104,7 +105,15 @@ void	ft_reset_cost(t_deque *deque)
 	head = deque->top;
 	while (head)
 	{
-		head->cost = 0;
+		head->cost_a = 0;
+		head->cost_b = 0;
 		head = head->next;
 	}
+}
+
+size_t	ft_abs(int value)
+{
+	if (value < 0)
+		return (-value);
+	return (value);
 }
