@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:10:19 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/23 17:04:21 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/24 13:31:04 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,27 +83,16 @@ static void sort_list(t_deque *list_a)
 	while (list_b->size)
 	{
 		ft_reset_cost(list_b);
-		
-		ft_calculate_cost_a(list_b, -1);
-		ft_calculate_cost_b_reverse(list_b, list_a);
+		ft_calculate_cost_b_reverse(list_a, list_b);
 		
 		ft_printf("\nA\n");
 		ft_print_list(list_a);
 		ft_printf("B\n");
 		ft_print_list(list_b);
 	
-		index_lowest_cost = ft_get_lowest_cost_index(list_b);
-		node_lowest_cost = ft_get_node_by_index(list_b, index_lowest_cost);
+		node_lowest_cost = ft_get_node_by_index(list_b, 0);
 		ft_printf("node: %d\n", node_lowest_cost->value);
-		if (node_lowest_cost->cost_a > 0 && node_lowest_cost->cost_b > 0)
-			ft_move_both(list_a, node_lowest_cost->cost_a, list_b, node_lowest_cost->cost_b);
-		else if (node_lowest_cost->cost_a < 0 && node_lowest_cost->cost_b < 0)
-			ft_move_both(list_a, node_lowest_cost->cost_a, list_b, node_lowest_cost->cost_b);
-		else
-		{
-			ft_move_a(list_a, node_lowest_cost->cost_a);
-			ft_move_b(list_b, node_lowest_cost->cost_b);
-		}
+		ft_move_a(list_a, node_lowest_cost->cost_a);
 		pa(list_a, list_b);
 	}
 	ft_printf("\nA\n");

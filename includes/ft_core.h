@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 11:34:17 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/23 16:31:33 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/24 10:07:03 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void	ft_move_a(t_deque *list_a, int cost);
 void	ft_move_b(t_deque *list_b, int cost);
 void	ft_move_both(t_deque *list_a, int cost_a, t_deque *list_b, int cost_b);
 size_t	ft_index_to_insert_in_b_reverse(t_deque *list_b, int value);
-int		ft_calculate_cost_b_reverse(t_deque *list_a, t_deque *list_b);
+void	ft_calculate_cost_b_reverse(t_deque *list_a, t_deque *list_b);
 
 #endif

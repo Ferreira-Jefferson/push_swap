@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 11:34:59 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/23 17:03:51 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/24 13:34:21 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,51 +63,61 @@ static void	ft_set_min_and_max(t_deque *list_b, int *min, int *max)
 	{
 		if (head->value > *max)
 			*max = head->value;
-		else if (head->value < *min)
+		if (head->value < *min)
 			*min = head->value;
 		head = head->next;
 	}
 }
 
-size_t	ft_index_to_insert_in_b_reverse(t_deque *list_b, int value)
+size_t	ft_index_to_insert_in_b_reverse(t_deque *list_a, int value)
 {
 	t_node	*current;
 	size_t	index;
+	int	index_candidate;
 	int		min;
 	int		max;
 
-	current = list_b->top;
-	ft_set_min_and_max(list_b, &min, &max);
+	current = list_a->top;
+	ft_set_min_and_max(list_a, &min, &max);
 	index = 0;
+	index_candidate = -1;
 	while (current)
 	{
-		if ((value > max && current->value == max) ||
-			(value < min && current->value == min))
-			return (index + 1);
-		else if (current->value > value && (current->next && value > current->next->value))
-			return (index + 1);
+		if (current->value < value && current->value > min)
+		{
+			min = current->value;
+			index_candidate = index + 1;
+		}
+		else if (current->value > value && current->value < max)
+		{
+			max = current->value;
+			index_candidate = index;
+		}
 		current = current->next;
 		index++;
 	}
-	return (0);
+	return (index_candidate);
 }
 
-int	ft_calculate_cost_b_reverse(t_deque *list_b, t_deque *list_a)
+void	ft_calculate_cost_b_reverse(t_deque *list_a, t_deque *list_b)
 {
-	t_node	*head;
 	int		index;
-
-	head = list_a->top;
-	while (head)
+	if (!list_a || !list_b)
+		return ;
+	if (!list_a->size || !list_b->size)
+		return ;
+	index = ft_index_to_insert_in_b_reverse(list_a, list_b->top->value);
+	ft_printf("\nvalue: %d | index_candidate fora: %d | ocst_a: %d\n", list_b->top->value, index, list_b->top->cost_a);
+	if (index <= (int) list_a->size / 2)
 	{
-		index = ft_index_to_insert_in_b_reverse(list_b, head->value);
-		if (index <= (int) list_b->size / 2)
-			head->cost_a = index;
-		else
-			head->cost_a = -(list_b->size - index);
-		head = head->next;
+		list_b->top->cost_a = (index);
+		ft_printf("value: %d | index_candidate#: %d", list_b->top->value, list_b->top->cost_a);
 	}
-	return (0);
+	else
+	{
+		list_b->top->cost_a = -(list_a->size - index);
+		ft_printf("index_candidate: %d", list_b->top->cost_a);
+	}
 }
 
 
