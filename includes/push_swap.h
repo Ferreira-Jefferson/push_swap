@@ -19,6 +19,8 @@
 # include "ft_auxiliaries.h"
 # include "ft_utils.h"
 # include "ft_core.h"
+# include "ft_core_calculation_cost.h"
+# include "ft_specific_movements.h"
 
 void	sa(t_deque *stack_a, int is_ss);
 void	sb(t_deque *stack_b, int is_ss);

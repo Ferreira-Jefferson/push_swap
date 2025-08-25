@@ -32,6 +32,13 @@ static void populate_list_with_args(t_deque *list, int argc, char *argv[])
 	ft_free_str_vector(values);
 }
 
+static void	final_rotate_to_min(t_deque *list_a)
+{
+	int index_lowest = ft_get_index_of_lowest_value(list_a);
+	int cost = ft_calculate_cost_a(list_a, index_lowest);
+	ft_move_a(list_a, cost);
+}
+
 static void sort_list(t_deque *list_a)
 {
 	t_deque	*list_b;
@@ -80,25 +87,15 @@ static void sort_list(t_deque *list_a)
 	}
 	ft_sort_three(list_a);
 	ft_reset_cost(list_a);
+
 	while (list_b->size)
 	{
 		ft_reset_cost(list_b);
 		ft_calculate_cost_b_reverse(list_a, list_b);
-		
-		ft_printf("\nA\n");
-		ft_print_list(list_a);
-		ft_printf("B\n");
-		ft_print_list(list_b);
-	
-		node_lowest_cost = ft_get_node_by_index(list_b, 0);
-		ft_printf("node: %d\n", node_lowest_cost->value);
-		ft_move_a(list_a, node_lowest_cost->cost_a);
+		ft_move_a(list_a, list_b->top->cost_a);
 		pa(list_a, list_b);
 	}
-	ft_printf("\nA\n");
-	ft_print_list(list_a);
-	ft_printf("B\n");
-	ft_print_list(list_b);
+	final_rotate_to_min(list_a);
 }
 
 int	main(int argc, char *argv[])
@@ -114,11 +111,7 @@ int	main(int argc, char *argv[])
 	if (!list_a)
 		return (1);
 	populate_list_with_args(list_a, argc, argv);
-	ft_print_list(list_a);
-	ft_printf("--main--\n\n");
 	sort_list(list_a);
-	ft_printf("\n--main--\n");
-	ft_print_list(list_a);
 	ft_free_deque(list_a);
 	return (0);
 }
