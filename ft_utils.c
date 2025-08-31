@@ -6,11 +6,22 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 10:00:08 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/23 14:38:04 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:58:24 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_utils.h"
+
+int equal_signs(int cost_a, int cost_b)
+{
+	if (cost_a == 0 && cost_b == 0)
+		return (1);
+	if (cost_a > 0 && cost_b > 0)
+		return (1);
+	if (cost_a < 0 && cost_b < 0)
+		return (1);
+	return (0);
+}
 
 t_node	*ft_get_node_by_index(t_deque *deque, size_t index)
 {
@@ -81,13 +92,7 @@ void	ft_free_deque(t_deque *deque)
 
 static int ft_calculare_real_cost(int cost_a, int cost_b)
 {
-	if (cost_a < 0 && cost_b < 0)
-	{
-		if (ft_abs(cost_a) > ft_abs(cost_b))
-			return (ft_abs(cost_a));
-		return (ft_abs(cost_b));
-	}
-	if (cost_a > 0 && cost_b > 0)
+	if (equal_signs(cost_a, cost_b))
 	{
 		if (ft_abs(cost_a) > ft_abs(cost_b))
 			return (ft_abs(cost_a));

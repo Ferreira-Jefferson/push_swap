@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:12:48 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/22 18:00:47 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/08/31 16:57:41 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ t_node	*ft_get_node_by_index(t_deque *deque, size_t index);
 void	ft_free_deque(t_deque *deque);
 size_t	ft_get_lowest_cost_index(t_deque *deque);
 size_t	ft_get_index_of_lowest_value(t_deque *deque);
+int equal_signs(int cost_a, int cost_b);
 
 #endif

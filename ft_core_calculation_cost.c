@@ -1,13 +1,13 @@
 #include "includes/ft_core_calculation_cost.h"
 
 
-static void	ft_set_min_and_max(t_deque *list_b, int *min, int *max)
+static void	ft_set_min_and_max(t_deque *list, int *min, int *max)
 {
 	t_node	*head;
 
-	*min = INT_MAX;
-	*max = INT_MIN;
-	head = list_b->top;
+	*min = list->top->value;
+	*max = list->top->value;
+	head = list->top;
 	while (head)
 	{
 		if (head->value > *max)
