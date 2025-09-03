@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 17:07:23 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/01 18:12:16 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/03 13:48:57 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,19 @@
 
 # include <unistd.h>
 # include "../libft/libft.h"
-# include "ft_error_handler.h"
-# include "ft_deque_handler.h"
-# include "ft_auxiliaries.h"
+
 # include "ft_utils.h"
+# include "ft_utils_ds.h"
+# include "ft_utils_cost.h"
+# include "ft_utils_ps.h"
+
+# include "ft_node_handler.h"
+# include "ft_deque_handler.h"
+# include "ft_error_handler.h"
+
 # include "ft_core.h"
-# include "ft_core_calculation_cost.h"
-# include "ft_specific_movements.h"
+# include "ft_cost.h"
+# include "ft_moves.h"
 
 void	sa(t_deque *stack_a, int is_ss);
 void	sb(t_deque *stack_b, int is_ss);

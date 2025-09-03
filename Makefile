@@ -10,8 +10,8 @@ LIB_DIR	 = libft
 LIBFT	   = $(LIB_DIR)/libft.a
 
 SRC		 =	push_swap.c ft_error_handler.c ft_node_handler.c ft_deque_handler.c \
-			ft_utils.c ft_auxiliaries.c ft_swap.c ft_push.c ft_rotate.c ft_reverse.c \
-			ft_core.c ft_specific_movements.c ft_core_calculation_cost.c
+			ft_core.c  ft_moves.c ft_swap.c ft_push.c ft_rotate.c ft_reverse.c \
+			ft_cost.c ft_utils.c ft_utils_cost.c ft_utils_ds.c ft_utils_ps.c
 
 OBJS		 = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 

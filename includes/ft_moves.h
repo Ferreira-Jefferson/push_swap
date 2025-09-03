@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_auxiliaries.h                                   :+:      :+:    :+:   */
+/*   ft_moves.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/20 12:12:48 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/22 17:47:51 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/08/21 11:34:17 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/09/03 13:46:58 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_AUXILIARIES_H
-# define FT_AUXILIARIES_H
+#ifndef FT_MOVES_H
+# define FT_MOVES_H
 
-# include "ft_deque_handler.h"
+# include "push_swap.h"
 
-char	**ft_get_values(int argc, char *argv[]);
-char	*ft_join_args(int argc, char *argv[]);
-void	ft_print_list(t_deque *deque);
-void	ft_invert_list(t_deque *deque);
-void	ft_reset_cost(t_deque *deque);
-size_t	ft_abs(int value);
+int		ft_is_it_ordered_by_top(t_deque *list);
+int		ft_is_it_ordered_by_bottom(t_deque *list);
+void	ft_move_a(t_deque *list_a, int cost);
+void	ft_move_b(t_deque *list_b, int cost);
+void	ft_move_both(t_deque *list_a, int cost_a, t_deque *list_b, int cost_b);
 
 #endif

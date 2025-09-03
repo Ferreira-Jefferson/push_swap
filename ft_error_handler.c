@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:27:31 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/01 18:09:13 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/03 11:23:56 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_not_is_only_number(char *value)
 	i = 0;
 	if (value[i] == '+' || value[i] == '-')
 		i++;
-	if (!value[i]) // só sinal sem número
+	if (!value[i])
 		return (1);
 	while (value[i])
 	{

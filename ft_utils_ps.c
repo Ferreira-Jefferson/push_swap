@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_auxiliaries.c                                   :+:      :+:    :+:   */
+/*   ft_utils_ps.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:36:51 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/23 14:36:31 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/03 13:48:49 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_deque_handler.h"
-#include "includes/ft_auxiliaries.h"
+#include "includes/ft_utils_ps.h"
 
 char	**ft_get_values(int argc, char *argv[])
 {
@@ -65,55 +65,9 @@ void	ft_print_list(t_deque *deque)
 	i = 0;
 	while (i < deque->size)
 	{
-		//  ft_printf("[%d]: %d\n", i, head->value);
-		ft_printf("[%d]: value: %d | cost_a: %d | cost_b: %d\n", i, head->value, head->cost_a, head->cost_b);
+		ft_printf("[%d]: value: %d | ", i, head->value);
+		ft_printf("cost_a: %d | cost_b: %d\n", head->cost_a, head->cost_b);
 		head = head->next;
 		i++;
 	}
-}
-
-void	ft_invert_list(t_deque *deque)
-{
-	t_node	*temp;
-	t_node	*current;
-	t_node	*next;
-
-	if (deque->size == 0)
-		return ;
-	current = deque->top;
-	next = deque->top->next;
-	while (current)
-	{
-		temp = current->prev;
-		current->prev = current->next;
-		current->next = temp;
-		current = next;
-		if (next)
-			next = next->next;
-	}
-	temp = deque->top;
-	deque->top = deque->bottom;
-	deque->bottom = temp;
-}
-
-void	ft_reset_cost(t_deque *deque)
-{
-	t_node	*head;
-
-	if (!deque || deque->size == 0)
-		return ;
-	head = deque->top;
-	while (head)
-	{
-		head->cost_a = 0;
-		head->cost_b = 0;
-		head = head->next;
-	}
-}
-
-size_t	ft_abs(int value)
-{
-	if (value < 0)
-		return (-value);
-	return (value);
 }

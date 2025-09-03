@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*   ft_utils_ps.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/05 21:19:38 by yogun             #+#    #+#             */
-/*   Updated: 2022/04/06 02:19:25 by yogun            ###   ########.fr       */
+/*   Created: 2025/08/20 12:12:48 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/09/03 13:48:11 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_UTILS_PS_H
+# define FT_UTILS_PS_H
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
-{
-	unsigned int	i;
+# include "ft_deque_handler.h"
 
-	i = 0;
-	if (!s)
-		return ;
-	while (s[i])
-	{
-		(*f)(i, s + i);
-		i++;
-	}
-}
+char	**ft_get_values(int argc, char *argv[]);
+char	*ft_join_args(int argc, char *argv[]);
+void	ft_print_list(t_deque *deque);
+
+#endif

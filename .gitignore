@@ -1,4 +1,5 @@
 .vscode
+.nfs*
 *.o
 a.out
 push_swap
@@ -6,4 +7,5 @@ push_swap
 checker_linux
 Push-Swap-Tester
 push_swapt_tester
+push_swap_visualizer
 42Barcelona*

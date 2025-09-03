@@ -5,109 +5,108 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/21 11:34:59 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/02 11:10:24 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/09/03 13:36:24 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/09/03 13:40:07 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_core.h"
+#include  "includes/ft_core.h"
 
-int	ft_is_it_ordered_by_top(t_deque *list)
+static void	make_move(
+	t_deque *list_a, t_deque *list_b, t_node *node_lowest_cost)
 {
-	int		prev;
-	t_node	*head;
-
-	if (!list || list->size <= 1)
-		return (1);
-	head = list->top;
-	prev = head->value;
-	head = head->next;
-	while (head)
+	if (ft_equal_signs(node_lowest_cost->cost_a, node_lowest_cost->cost_b))
+		ft_move_both(
+			list_a, node_lowest_cost->cost_a, list_b, node_lowest_cost->cost_b);
+	else
 	{
-		if (prev > head->value)
-			return (0);
-		prev = head->value;
-		head = head->next;
+		ft_move_a(list_a, node_lowest_cost->cost_a);
+		ft_move_b(list_b, node_lowest_cost->cost_b);
 	}
-	return (1);
 }
 
-int	ft_is_it_ordered_by_bottom(t_deque *list)
+void	ft_sort_three(t_deque *list)
 {
-	int		prev;
-	t_node	*head;
+	int	top;
+	int	middle;
+	int	bottom;
 
-	if (!list || list->size <= 1)
-		return (1);
-	head = list->bottom;
-	prev = head->value;
-	head = head->prev;
-	while (head)
-	{	
-		if (prev > head->value)
-			return (0);
-		prev = head->value;
-		head = head->prev;
+	if (ft_is_it_ordered_by_top(list))
+		return ;
+	if (ft_is_it_ordered_by_bottom(list))
+	{
+		ra(list, 0);
+		sa(list, 0);
+		return ;
 	}
-	return (1);
+	middle = list->top->next->value;
+	top = list->top->value;
+	bottom = list->bottom->value;
+	if (top > middle && top < bottom)
+		return (sa(list, 0));
+	if (top > middle && top > bottom)
+		return (ra(list, 0));
+	ra(list, 0);
+	ft_sort_three(list);
 }
 
-void	ft_move_a(t_deque *list_a, int cost)
+void	ft_sort_four(t_deque *list_a, t_deque *list_b)
 {
-	if (cost < 0)
-	{
-		while (cost)
-		{
-			rra(list_a, 0);
-			cost++;
-		}		
-	}
-	while (cost)
-	{
-		ra(list_a, 0);
-		cost--;
-	}	
+	int	index_lowest;
+	int	cost;
+
+	index_lowest = ft_get_index_of_lowest_value(list_a);
+	cost = ft_calculate_cost_a(list_a, index_lowest);
+	ft_move_a(list_a, cost);
+	pb(list_a, list_b);
+	ft_sort_three(list_a);
+	pa(list_a, list_b);
 }
 
-void	ft_move_b(t_deque *list_b, int cost)
+void	ft_sort_any(t_deque *list_a, t_deque *list_b)
 {
-	if (cost < 0)
-	{
-		while (cost)
-		{
-			rrb(list_b, 0);
-			cost++;
-		}		
-	}
-	while (cost)
-	{
-		rb(list_b, 0);
-		cost--;
-	}	
-}
-void	ft_move_both(t_deque *list_a, int cost_a, t_deque *list_b, int cost_b)
-{
-	int abs_cost_a;
-	int abs_cost_b;
-	int signal;
+	size_t	index_lowest_cost;
 
-	signal = 1;
-	if (cost_a < 0)
-		signal = -1;
-	abs_cost_a = ft_abs(cost_a);
-	abs_cost_b = ft_abs(cost_b);
-	while (abs_cost_a && abs_cost_b)
+	pb(list_a, list_b);
+	pb(list_a, list_b);
+	if (list_b->top->value < list_b->bottom->value)
+		sb(list_b, 0);
+	while (list_a->size > 3)
 	{
-		if (signal < 0)
-			rrr(list_a, list_b);
+		ft_calculate_cost_a(list_a, -1);
+		ft_calculate_cost_b(list_a, list_b);
+		index_lowest_cost = ft_get_lowest_cost_index(list_a);
+		make_move(list_a, list_b,
+			ft_get_node_by_index(list_a, index_lowest_cost));
+		pb(list_a, list_b);
+	}
+	ft_sort_three(list_a);
+	while (list_b->size)
+	{
+		ft_calculate_cost_b_origin(list_b, -1);
+		ft_calculate_cost_a_when_b_origin(list_a, list_b);
+		index_lowest_cost = ft_get_lowest_cost_index(list_b);
+		make_move(list_a, list_b,
+			ft_get_node_by_index(list_b, index_lowest_cost));
+		pa(list_a, list_b);
+	}
+}
+
+void	ft_final_rotate(t_deque *list_a)
+{
+	int		index_min;
+
+	while (!ft_is_it_ordered_by_top(list_a))
+	{
+		index_min = ft_get_min(list_a);
+		if (index_min <= (int) list_a->size / 2)
+			while (index_min--)
+				ra(list_a, 0);
 		else
-			rr(list_a, list_b);
-		abs_cost_a--;
-		abs_cost_b--;
+		{
+			index_min = list_a->size - index_min;
+			while (index_min--)
+				rra(list_a, 0);
+		}
 	}
-	if (abs_cost_a)
-		ft_move_a(list_a, abs_cost_a * signal);
-	if (abs_cost_b)
-		ft_move_b(list_b, abs_cost_b * signal);
 }
-
