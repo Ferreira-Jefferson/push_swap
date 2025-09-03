@@ -6,14 +6,13 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 17:07:23 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/03 13:48:57 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:20:51 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <unistd.h>
 # include "../libft/libft.h"
 
 # include "ft_utils.h"

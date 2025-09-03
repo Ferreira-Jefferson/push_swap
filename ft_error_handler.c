@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:27:31 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/03 11:23:56 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:37:34 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	ft_validade_values(char **values)
 	int		i;
 	long	value;
 
+	if (!values[0])
+		return (1);
 	i = 0;
 	while (values[i])
 	{

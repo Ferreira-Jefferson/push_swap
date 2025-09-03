@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:10:19 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/03 11:21:08 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/03 14:20:24 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	main(int argc, char *argv[])
 
 	if (ft_handle_input_error(argc, argv))
 	{
-		write(2, "Error\n", 6);
+		ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
 	list_a = ft_deque_create();
