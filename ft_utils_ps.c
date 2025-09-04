@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:36:51 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/03 13:48:49 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/04 14:35:45 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ char	*ft_join_args(int argc, char *argv[])
 	i = 1;
 	while (i < argc)
 	{
+		if (*argv[i] == '\0')
+			return (ft_to_free((void **) &values));
 		values_args = ft_strjoin(argv[i], " ");
 		if (!values_args)
 			return (ft_to_free((void **) &values));
@@ -70,4 +72,24 @@ void	ft_print_list(t_deque *deque)
 		head = head->next;
 		i++;
 	}
+}
+
+void	populate_list_with_args(t_deque *list, int argc, char *argv[])
+{
+	char	**values;
+	int		i;
+
+	values = ft_get_values(argc, argv);
+	if (!values)
+	{
+		list = NULL;
+		return ;
+	}
+	i = 0;
+	while (values[i])
+	{
+		ft_deque_push_bottom(list, ft_atol(values[i]));
+		i++;
+	}
+	ft_free_str_vector(values);
 }

@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 07:43:41 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/20 14:32:59 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/04 09:57:20 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 int		ft_isspace(int c);
+int		ft_isequal(char *s1, char *s2);
 int		ft_atoi_base(char *nbr, char *base);
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
 int		ft_is_valid_base(char *base);

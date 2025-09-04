@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_to_free.c                                       :+:      :+:    :+:   */
+/*   ft_isequal.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/28 10:18:37 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/04 12:23:31 by jtertuli         ###   ########.fr       */
+/*   Created: 2025/09/04 09:54:31 by jtertuli          #+#    #+#             */
+/*   Updated: 2025/09/04 10:12:26 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void	*ft_to_free(void **p)
+int	ft_isequal(char *s1, char *s2)
 {
-	if (*p)
+	if (ft_strlen(s1) != ft_strlen(s2))
+		return (0);
+	while (*s1)
 	{
-		free(*p);
-		*p = NULL;
+		if (*s1 != *s2)
+			return (0);
+		s1++;
+		s2++;
 	}
-	return (NULL);
+	return (1);
 }

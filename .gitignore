@@ -1,10 +1,16 @@
 .vscode
 .nfs*
+
+push_swap
+checker
+
 *.o
 a.out
-push_swap
+
 *test*
 checker_linux
+
+# Testers
 Push-Swap-Tester
 push_swapt_tester
 push_swap_visualizer

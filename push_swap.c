@@ -6,31 +6,11 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:10:19 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/03 14:20:24 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/04 10:18:48 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
-
-static void	populate_list_with_args(t_deque *list, int argc, char *argv[])
-{
-	char	**values;
-	int		i;
-
-	values = ft_get_values(argc, argv);
-	if (!values)
-	{
-		list = NULL;
-		return ;
-	}
-	i = 0;
-	while (values[i])
-	{
-		ft_deque_push_bottom(list, ft_atol(values[i]));
-		i++;
-	}
-	ft_free_str_vector(values);
-}
 
 static void	sort_list(t_deque *list_a)
 {

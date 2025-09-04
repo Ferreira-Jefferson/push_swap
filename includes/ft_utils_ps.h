@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:12:48 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/03 13:48:11 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/04 10:19:16 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@
 char	**ft_get_values(int argc, char *argv[]);
 char	*ft_join_args(int argc, char *argv[]);
 void	ft_print_list(t_deque *deque);
+void	populate_list_with_args(t_deque *list, int argc, char *argv[]);
 
 #endif
