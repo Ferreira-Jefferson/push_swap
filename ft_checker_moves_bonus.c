@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:49:57 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/04 10:56:27 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/04 14:45:46 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	push(char *move, t_deque *list_a, t_deque *list_b)
 		node = ft_detache_node_by_index(list_b, 0);
 		if (!node)
 			return ;
-		ft_deque_push_top(list_a, node->value);		
+		ft_deque_push_top(list_a, node->value);
 	}
 	else
 	{
@@ -53,7 +53,7 @@ void	swap(t_deque *list_a, t_deque *list_b)
 		node_2 = list_b->top->next;
 		temp = node_1->value;
 		node_1->value = node_2->value;
-		node_2->value = temp;		
+		node_2->value = temp;
 	}
 }
 

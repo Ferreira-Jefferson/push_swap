@@ -6,12 +6,12 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:18:01 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/04 14:29:50 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/04 14:45:24 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/checker_bonus.h"
-# include "includes/ft_error_handler.h"
+#include "includes/ft_error_handler.h"
 
 int	main(int argc, char *argv[])
 {	
@@ -33,7 +33,7 @@ int	main(int argc, char *argv[])
 		if (ft_is_it_ordered_by_top(list_a))
 			ft_printf("OK\n");
 		else
-			ft_printf("KO\n");		
+			ft_printf("KO\n");
 	}
 	ft_free_deque(list_a);
 	return (0);
@@ -42,7 +42,7 @@ int	main(int argc, char *argv[])
 int	ft_handler_moves(t_deque *list_a)
 {
 	char	*input;
-	t_deque *list_b;
+	t_deque	*list_b;
 	int		error;
 	char	*move;
 
@@ -54,7 +54,7 @@ int	ft_handler_moves(t_deque *list_a)
 		if (!ft_is_valid_move(input))
 		{
 			error = 1;
-			break ;		
+			break ;
 		}
 		move = ft_strtrim(input, "\n");
 		ft_make_move(move, list_a, list_b);
@@ -93,13 +93,13 @@ void	ft_make_move(char *move, t_deque *list_a, t_deque *list_b)
 		reverse(list_a, list_b);
 }
 
-int ft_is_valid_move(char *input)
+int	ft_is_valid_move(char *input)
 {
-	char **moves;
-	char *move;
-	int is_valid;
-	int i;
-	
+	char	**moves;
+	char	*move;
+	int		is_valid;
+	int		i;
+
 	moves = ft_split(input, ' ');
 	if (!moves || moves[0] == NULL || moves[1] != NULL)
 	{
@@ -111,7 +111,7 @@ int ft_is_valid_move(char *input)
 	move = ft_strtrim(moves[0], "\n");
 	ft_free_str_vector(moves);
 	moves = ft_split("sa sb ss pa pb ra rb rr rra rrb rrr", ' ');
-	while(moves[i])
+	while (moves[i])
 	{
 		if (ft_isequal(move, moves[i]))
 				is_valid = 1;
