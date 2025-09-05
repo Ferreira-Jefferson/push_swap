@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:27:31 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/03 14:37:34 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/05 08:41:38 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ int	ft_handle_input_error(int argc, char *argv[])
 	char	**values;
 	int		error;
 
-	if (argc == 1)
-		return (1);
 	values = ft_get_values(argc, argv);
 	if (!values)
 		return (1);
