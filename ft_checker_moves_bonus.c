@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:49:57 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/07 06:58:26 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/07 09:13:07 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	push(char *move, t_deque *list_a, t_deque *list_b)
 		if (!node)
 			return ;
 		ft_deque_push_top(list_a, node->value);
+		free(node);
 	}
 	else
 	{
@@ -30,6 +31,7 @@ void	push(char *move, t_deque *list_a, t_deque *list_b)
 		if (!node)
 			return ;
 		ft_deque_push_top(list_b, node->value);
+		free(node);
 	}
 }
 
@@ -67,6 +69,7 @@ void	reverse(t_deque *list_a, t_deque *list_b)
 		if (!node)
 			return ;
 		ft_deque_push_top(list_a, node->value);
+		free(node);
 	}
 	if (list_b)
 	{
@@ -74,6 +77,7 @@ void	reverse(t_deque *list_a, t_deque *list_b)
 		if (!node)
 			return ;
 		ft_deque_push_top(list_b, node->value);
+		free(node);
 	}
 }
 
@@ -87,6 +91,7 @@ void	rotate(t_deque *list_a, t_deque *list_b)
 		if (!node)
 			return ;
 		ft_deque_push_bottom(list_a, node->value);
+		free(node);
 	}
 	if (list_b)
 	{
@@ -94,5 +99,6 @@ void	rotate(t_deque *list_a, t_deque *list_b)
 		if (!node)
 			return ;
 		ft_deque_push_bottom(list_b, node->value);
+		free(node);
 	}
 }

@@ -3,7 +3,10 @@ BONUS		= checker
 
 CC		  	= gcc
 CFLAGS	  	= -Wall -Werror -Wextra -g
-#  -fsanitize=address
+VALGRIND_FLAGS = valgrind --leak-check=full \
+				--show-leak-kinds=all \
+				--track-origins=yes \
+# 				--verbose 
 INCLUDES	= includes
 OBJDIR	  	= objs
 
@@ -49,6 +52,12 @@ clean:
 fclean: clean
 	rm -f $(NAME) $(BONUS)
 	$(MAKE) fclean -C $(LIB_DIR)
+
+val-push:
+	$(VALGRIND_FLAGS) --log-file=val-out-push.txt ./push_swap 3 4 1 2
+
+val-checker:
+	$(VALGRIND_FLAGS)  --log-file=val-out-checker.txt ./checker 3 4 1 2
 
 re: fclean all
 

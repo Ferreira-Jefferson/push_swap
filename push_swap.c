@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:10:19 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/05 08:41:52 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/07 07:52:19 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,13 @@ static void	sort_list(t_deque *list_a)
 	if (!list_b)
 		return ;
 	if (list_a->size == 4)
-		return (ft_sort_four(list_a, list_b));
+	{
+		ft_sort_four(list_a, list_b);
+		ft_free_deque(list_b);
+		return ;
+	}
 	ft_sort_any(list_a, list_b);
+	ft_free_deque(list_b);
 	ft_final_rotate(list_a);
 }
 

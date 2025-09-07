@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 16:28:07 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/03 10:42:02 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/07 07:50:37 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	reverse(t_deque *list)
 	if (!node)
 		return ;
 	ft_deque_push_top(list, node->value);
+	free(node);
 }
 
 void	rra(t_deque *list_a, int is_rrr)
