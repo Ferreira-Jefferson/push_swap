@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:49:57 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/04 14:45:46 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/07 06:58:26 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	swap(t_deque *list_a, t_deque *list_b)
 	t_node	*node_2;
 	int		temp;
 
-	if (list_a)
+	if (list_a && list_a->size >= 2)
 	{
 		node_1 = list_a->top;
 		node_2 = list_a->top->next;
@@ -47,7 +47,7 @@ void	swap(t_deque *list_a, t_deque *list_b)
 		node_1->value = node_2->value;
 		node_2->value = temp;
 	}
-	if (list_b)
+	if (list_b && list_b->size >= 2)
 	{
 		node_1 = list_b->top;
 		node_2 = list_b->top->next;
