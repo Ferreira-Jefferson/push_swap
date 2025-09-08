@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:36:51 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/04 15:03:19 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/08 11:37:14 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	populate_list_with_args(t_deque *list, int argc, char *argv[])
 	i = 0;
 	while (values[i])
 	{
-		ft_deque_push_bottom(list, ft_atol(values[i]));
+		ft_deque_push_bottom(list, ft_node_create(ft_atol(values[i])));
 		i++;
 	}
 	ft_free_str_vector(values);

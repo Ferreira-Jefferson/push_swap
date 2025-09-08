@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 09:11:21 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/08/22 16:05:24 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/08 11:59:24 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,47 +25,41 @@ t_deque	*ft_deque_create(void)
 	return (new_deque);
 }
 
-void	ft_deque_push_top(t_deque *deque, int value)
+void	ft_deque_push_top(t_deque *deque, t_node *node)
 {
-	t_node	*new_node;
-
-	if (!deque)
+	if (!deque || !node)
 		return ;
-	new_node = ft_node_create(value);
-	if (!new_node)
-		return ;
+	node->prev = NULL;
+	node->next = NULL;
 	if (deque->size == 0)
 	{
-		deque->top = new_node;
-		deque->bottom = new_node;
+		deque->top = node;
+		deque->bottom = node;
 		deque->size = 1;
 		return ;
 	}
-	new_node->next = deque->top;
-	deque->top->prev = new_node;
-	deque->top = new_node;
+	node->next = deque->top;
+	deque->top->prev = node;
+	deque->top = node;
 	deque->size++;
 }
 
-void	ft_deque_push_bottom(t_deque *deque, int value)
+void	ft_deque_push_bottom(t_deque *deque, t_node *node)
 {
-	t_node	*new_node;
-
-	if (!deque)
+	if (!deque || !node)
 		return ;
-	new_node = ft_node_create(value);
-	if (!new_node)
-		return ;
+	node->prev = NULL;
+	node->next = NULL;
 	if (deque->size == 0)
 	{
-		deque->top = new_node;
-		deque->bottom = new_node;
+		deque->top = node;
+		deque->bottom = node;
 		deque->size = 1;
 		return ;
 	}
-	new_node->prev = deque->bottom;
-	deque->bottom->next = new_node;
-	deque->bottom = new_node;
+	node->prev = deque->bottom;
+	deque->bottom->next = node;
+	deque->bottom = node;
 	deque->size++;
 }
 

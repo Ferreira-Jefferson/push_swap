@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 15:22:41 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/07 07:49:27 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/08 11:39:31 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	pa(t_deque *list_a, t_deque *list_b)
 	node = ft_detache_node_by_index(list_b, 0);
 	if (!node)
 		return ;
-	ft_deque_push_top(list_a, node->value);
+	ft_deque_push_top(list_a, ft_node_create(node->value));
 	free(node);
 	ft_printf("pa\n");
 }
@@ -31,7 +31,7 @@ void	pb(t_deque *list_a, t_deque *list_b)
 	node = ft_detache_node_by_index(list_a, 0);
 	if (!node)
 		return ;
-	ft_deque_push_top(list_b, node->value);
+	ft_deque_push_top(list_b, ft_node_create(node->value));
 	free(node);
 	ft_printf("pb\n");
 }

@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 09:09:26 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/03 13:22:14 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/08 11:34:57 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ typedef struct s_deque {
 }	t_deque;
 
 t_deque	*ft_deque_create(void);
-void	ft_deque_push_top(t_deque *deque, int value);
-void	ft_deque_push_bottom(t_deque *deque, int value);
+void	ft_deque_push_top(t_deque *deque, t_node *node);
+void	ft_deque_push_bottom(t_deque *deque, t_node *node);
 void	ft_deque_pop_top(t_deque *deque);
 void	ft_deque_pop_bottom(t_deque *deque);
 

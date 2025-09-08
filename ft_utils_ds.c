@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 10:00:08 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/07 09:09:31 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/08 12:00:47 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,19 +88,19 @@ size_t	ft_get_index_of_lowest_value(t_deque *deque)
 	return (index_lowest);
 }
 
-void    ft_free_deque(t_deque *deque)
+void	ft_free_deque(t_deque *deque)
 {
-    t_node  *head;
-    t_node  *to_free;
+	t_node	*head;
+	t_node	*to_free;
 
-    if (!deque || !deque)
-        return ;
-    head = deque->top;
-    while (head)
-    {
-        to_free = head;
-        head = head->next;
-        ft_to_free((void **) &to_free);
-    }
-    ft_to_free((void **) &deque);;
+	if (!deque || !deque)
+		return ;
+	head = deque->top;
+	while (head)
+	{
+		to_free = head;
+		head = head->next;
+		ft_to_free((void **) &to_free);
+	}
+	ft_to_free((void **) &deque);
 }
