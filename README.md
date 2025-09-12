@@ -123,4 +123,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ---
 
-*Project developed as part of the 42
+*Project developed as part of the 42*
