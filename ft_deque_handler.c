@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 09:11:21 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/08 11:59:24 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/09 14:51:30 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,12 @@ void	ft_deque_push_top(t_deque *deque, t_node *node)
 
 void	ft_deque_push_bottom(t_deque *deque, t_node *node)
 {
-	if (!deque || !node)
+	if (!deque)
+	{
+		free(node);
+		return ;
+	}
+	if (!node)
 		return ;
 	node->prev = NULL;
 	node->next = NULL;

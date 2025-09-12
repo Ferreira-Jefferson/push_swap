@@ -6,12 +6,13 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 12:36:51 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/08 11:37:14 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/09 15:31:47 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_deque_handler.h"
 #include "includes/ft_utils_ps.h"
+#include "includes/ft_utils_ds.h"
 
 char	**ft_get_values(int argc, char *argv[])
 {
@@ -74,22 +75,31 @@ void	ft_print_list(t_deque *deque)
 	}
 }
 
-void	populate_list_with_args(t_deque *list, int argc, char *argv[])
+int	populate_list_with_args(t_deque **list, int argc, char *argv[])
 {
 	char	**values;
+	t_node	*aux_node;
 	int		i;
 
 	values = ft_get_values(argc, argv);
 	if (!values)
 	{
-		list = NULL;
-		return ;
+		*list = NULL;
+		return (1);
 	}
 	i = 0;
 	while (values[i])
 	{
-		ft_deque_push_bottom(list, ft_node_create(ft_atol(values[i])));
+		aux_node = ft_node_create(ft_atol(values[i]));
+		if (!aux_node)
+		{
+			ft_free_str_vector(values);
+			ft_free_deque(*list);
+			return (1);
+		}
+		ft_deque_push_bottom(*list, aux_node);
 		i++;
 	}
 	ft_free_str_vector(values);
+	return (0);
 }

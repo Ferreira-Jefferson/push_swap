@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:10:19 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/07 07:52:19 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/09 15:27:05 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	main(int argc, char *argv[])
 	list_a = ft_deque_create();
 	if (!list_a)
 		return (1);
-	populate_list_with_args(list_a, argc, argv);
+	populate_list_with_args(&list_a, argc, argv);
 	sort_list(list_a);
 	ft_free_deque(list_a);
 	return (0);

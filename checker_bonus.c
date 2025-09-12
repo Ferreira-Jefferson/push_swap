@@ -6,7 +6,7 @@
 /*   By: jtertuli <jtertuli@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 14:18:01 by jtertuli          #+#    #+#             */
-/*   Updated: 2025/09/05 08:42:19 by jtertuli         ###   ########.fr       */
+/*   Updated: 2025/09/09 16:15:04 by jtertuli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 int	main(int argc, char *argv[])
 {	
 	t_deque	*list_a;
+	t_deque	*list_b;
 
 	if (argc == 1)
 		return (0);
@@ -25,31 +26,34 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 	list_a = ft_deque_create();
-	populate_list_with_args(list_a, argc, argv);
+	populate_list_with_args(&list_a, argc, argv);
 	if (!list_a)
 		return (1);
-	if (ft_handler_moves(list_a))
+	list_b = ft_deque_create();
+	if (ft_handler_moves(list_a, list_b))
 		ft_putstr_fd("Error\n", 2);
 	else
-	{
-		if (ft_is_it_ordered_by_top(list_a))
-			ft_printf("OK\n");
-		else
-			ft_printf("KO\n");
-	}
+		ft_final_result(list_a);
 	ft_free_deque(list_a);
+	ft_free_deque(list_b);
 	return (0);
 }
 
-int	ft_handler_moves(t_deque *list_a)
+void	ft_final_result(t_deque *list_a)
+{
+	if (ft_is_it_ordered_by_top(list_a))
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
+}
+
+int	ft_handler_moves(t_deque *list_a, t_deque *list_b)
 {
 	char	*input;
-	t_deque	*list_b;
 	int		error;
 	char	*move;
 
 	error = 0;
-	list_b = ft_deque_create();
 	input = get_next_line(0);
 	while (input)
 	{
@@ -65,7 +69,6 @@ int	ft_handler_moves(t_deque *list_a)
 		input = get_next_line(0);
 	}
 	ft_to_free((void **) &input);
-	ft_to_free((void **) &list_b);
 	return (error);
 }
 
